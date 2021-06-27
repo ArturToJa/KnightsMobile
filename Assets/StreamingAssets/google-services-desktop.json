@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "802040408470",
+    "project_id": "knights-mobile-f2bb4",
+    "storage_bucket": "knights-mobile-f2bb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802040408470:android:0bdcb194f50c88146e55b7",
+        "android_client_info": {
+          "package_name": "com.KnightsMobile.Knights.Android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802040408470-3dck8mvvco4b7mv7d3nmc03e1eq660ag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMt6iExr5XqLVgW-LZreKh_PGF9D68xl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802040408470-3dck8mvvco4b7mv7d3nmc03e1eq660ag.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802040408470-4qsf7eev7eteivnmf4uqp2ee2ueecn1c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.KnightsMobile.Knights.iOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

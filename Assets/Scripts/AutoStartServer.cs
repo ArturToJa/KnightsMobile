@@ -17,6 +17,7 @@ public class AutoStartServer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager.networkAddress = "localhost";
         manager.StartServer();
     }
 
