@@ -1,0 +1,391 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: MedalionAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2066394272, guid: 72aec5c4cd37ed34f91eb14f278aefc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 8f4db09518076f94b94adbefbbb44455, type: 2}
+  items:
+  - name: 656d7074795f6269675f6672616d655f30
+    region:
+      x: 0
+      y: 0
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6134323266616536353137363430353439613363643462663334393032346461
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f31
+    region:
+      x: 0
+      y: .16796875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3966363561346362666239353230623435393131393932313134306438663462
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3130
+    region:
+      x: 0
+      y: .3359375
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6330306362306237643337383738613462393439646639643731623130643830
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3131
+    region:
+      x: 0
+      y: .50390625
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3830376335393931623636613931333464616232376636343734376337333664
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3132
+    region:
+      x: 0
+      y: .671875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3063353930393434643531646536333436383362333436616562313363326361
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3133
+    region:
+      x: .162109375
+      y: 0
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3531316231313563333065626364353437613435383634343635383937643435
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3134
+    region:
+      x: .32421875
+      y: 0
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3233643966646661333862633338333462396631633738666463373035333930
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3135
+    region:
+      x: .486328125
+      y: 0
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6536326136376431633735326432623438386334336330343538626438376131
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3136
+    region:
+      x: .6484375
+      y: 0
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3933333831373834393161313536313465393330366533623630393365323461
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3137
+    region:
+      x: .810546875
+      y: 0
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3665643137386661393365653233363463396534306434623731303035653930
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3138
+    region:
+      x: .162109375
+      y: .16796875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6339326130326430353032666533653437383432636432373139623339643063
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3139
+    region:
+      x: .162109375
+      y: .3359375
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3861323335376439343439353762373435623364633138373739336430376432
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f32
+    region:
+      x: .162109375
+      y: .50390625
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6531306264626336316566656238623436396665613835643838636166336439
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f3230
+    region:
+      x: .162109375
+      y: .671875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3138363661316263336133643132653436383763623265633131666463333063
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f33
+    region:
+      x: .32421875
+      y: .16796875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3531373166623564626162626566613462623031623133326136616330336464
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f34
+    region:
+      x: .486328125
+      y: .16796875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3437323761646134356233386130373437396335393830333236333038636637
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f35
+    region:
+      x: .6484375
+      y: .16796875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 3864373864383431353361626239633466623432343361663138656530653363
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f36
+    region:
+      x: .810546875
+      y: .16796875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6435663839643738316239626531363433613733333437383135623237326466
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f37
+    region:
+      x: .32421875
+      y: .3359375
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6134353232303839386666313466623434383764346165626362363135623565
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f38
+    region:
+      x: .32421875
+      y: .50390625
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6661376631393161386563653339313432396231363361643431303662366531
+    deleted: 0
+    texture: {fileID: 0}
+  - name: 656d7074795f6269675f6672616d655f39
+    region:
+      x: .32421875
+      y: .671875
+      width: .16015625
+      height: .166015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 164, y: 170}
+    textureGUID: 6164313865633730616138363562623464616536333364666437353363336439
+    deleted: 0
+    texture: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

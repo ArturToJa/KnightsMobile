@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Firebase.Auth;
+using Firebase.Database;
 
 public class Authenticator : NetworkAuthenticator
 {
@@ -11,6 +12,8 @@ public class Authenticator : NetworkAuthenticator
     public const string USERNAME_PATTERN = @"^[a-zA-Z0-9]{4,20}$";
     public const string RANDOM_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+    public DatabaseReference DBReference;
+
     // this is set if authentication fails to prevent garbage AuthRequestMessage spam
     bool ServerAuthFailed;
 
@@ -18,9 +21,8 @@ public class Authenticator : NetworkAuthenticator
 
     public struct AuthRequestMessage : NetworkMessage
     {
-        // use whatever credentials make sense for your game
-        // for example, you might want to pass the accessToken if using oauth
         public string authEmail;
+        public string authUsername;
         public string authPassword;
         public bool isRegister;
     }
@@ -71,94 +73,35 @@ public class Authenticator : NetworkAuthenticator
     /// <param name="msg">The message payload</param>
     public void OnAuthRequestMessage(NetworkConnection conn, AuthRequestMessage msg)
     {
-        Debug.Log("Someone trying to authenticate");
         if(msg.isRegister)
         {
-            FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(msg.authEmail, msg.authPassword).ContinueWith(task => 
-            {
-                if(task.IsFaulted || task.IsCanceled)
-                {
-                    Firebase.FirebaseException e = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
-                    AuthError error = (AuthError)e.ErrorCode;
-
-                    // create and send msg to client so it knows to disconnect
-                    AuthResponseMessage authResponseMessage = new AuthResponseMessage
-                    {
-                        code = 200,
-                        message = error.ToString()
-                    };
-
-                    conn.Send(authResponseMessage);
-
-                    // must set NetworkConnection isAuthenticated = false
-                    conn.isAuthenticated = false;
-
-                    // disconnect the client after 1 second so that response message gets delivered
-                    if (!ServerAuthFailed)
-                    {
-                        // set this false so this coroutine can only be started once
-                        ServerAuthFailed = true;
-
-                        StartCoroutine(DelayedDisconnect(conn, 1));
-                    }
-                }
-                if(task.IsCompleted)
-                {
-                    // create and send msg to client so it knows to disconnect
-                    AuthResponseMessage authResponseMessage = new AuthResponseMessage
-                    {
-                        code = 200,
-                        message = "Success"
-                    };
-
-                    conn.Send(authResponseMessage);
-
-                    // must set NetworkConnection isAuthenticated = false
-                    conn.isAuthenticated = false;
-
-                    // disconnect the client after 1 second so that response message gets delivered
-                    if (!ServerAuthFailed)
-                    {
-                        // set this false so this coroutine can only be started once
-                        ServerAuthFailed = true;
-
-                        StartCoroutine(DelayedDisconnect(conn, 1));
-                    }
-                }
-            });
+            RegisterUser(conn, msg);
         }
         else
         {
-            FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(msg.authEmail, msg.authPassword).ContinueWith(task =>
+            LoginUser(conn, msg);
+        }
+    }
+
+    void LoginUser(NetworkConnection conn, AuthRequestMessage msg)
+    {
+        FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(msg.authEmail, msg.authPassword).ContinueWith(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
             {
-                if (task.IsFaulted || task.IsCanceled)
+                Firebase.FirebaseException e = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+                AuthError error = (AuthError)e.ErrorCode;
+
+                DenyAuthentication(conn, error.ToString());
+            }
+
+            if (task.IsCompleted)
+            {
+                if (!task.Result.IsEmailVerified)
                 {
-                    Firebase.FirebaseException e = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
-                    AuthError error = (AuthError)e.ErrorCode;
-
-                    // create and send msg to client so it knows to disconnect
-                    AuthResponseMessage authResponseMessage = new AuthResponseMessage
-                    {
-                        code = 200,
-                        message = error.ToString()
-                    };
-
-                    conn.Send(authResponseMessage);
-
-                    // must set NetworkConnection isAuthenticated = false
-                    conn.isAuthenticated = false;
-
-                    // disconnect the client after 1 second so that response message gets delivered
-                    if (!ServerAuthFailed)
-                    {
-                        // set this false so this coroutine can only be started once
-                        ServerAuthFailed = true;
-
-                        StartCoroutine(DelayedDisconnect(conn, 1));
-                    }
+                    DenyAuthentication(conn, "Email not verified");
                 }
-
-                if (task.IsCompleted)
+                else
                 {
                     // create and send msg to client so it knows to proceed
                     AuthResponseMessage authResponseMessage = new AuthResponseMessage
@@ -168,11 +111,52 @@ public class Authenticator : NetworkAuthenticator
                     };
 
                     conn.Send(authResponseMessage);
+                    conn.authenticationData = task.Result;
 
                     // Accept the successful authentication
                     ServerAccept(conn);
                 }
+            }
+        });
+    }
+
+    void RegisterUser(NetworkConnection conn, AuthRequestMessage msg)
+    {
+        if (msg.authUsername != "")
+        {
+            FirebaseManager.instance.IsUsernameAvailable(msg.authUsername.ToLower(), result => 
+            {
+                if (result)
+                {
+                    FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(msg.authEmail, msg.authPassword).ContinueWith(task => 
+                    {
+                        if (task.IsFaulted || task.IsCanceled)
+                        {
+                            Firebase.FirebaseException e = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+                            AuthError error = (AuthError)e.ErrorCode;
+
+                            DenyAuthentication(conn, error.ToString());
+                        }
+                        if (task.IsCompleted)
+                        {
+                            var result = task.Result.SendEmailVerificationAsync(); // handle email resend if anything goes wrong
+                            FirebaseManager.instance.AddUsername(task.Result.UserId, msg.authUsername.ToLower());
+                            UserProfile profile = new UserProfile();
+                            profile.DisplayName = msg.authUsername;
+                            task.Result.UpdateUserProfileAsync(profile); // handle error if anything goes wrong
+                            DenyAuthentication(conn, "Success");
+                        }
+                    });
+                }
+                else
+                {
+                    DenyAuthentication(conn, "Username not available");
+                }
             });
+        }
+        else
+        {
+            DenyAuthentication(conn, "Username field is empty");
         }
     }
 
@@ -182,6 +166,30 @@ public class Authenticator : NetworkAuthenticator
 
         // Reject the unsuccessful authentication
         ServerReject(conn);
+    }
+
+    void DenyAuthentication(NetworkConnection conn, string error)
+    {
+        // create and send msg to client so it knows to disconnect
+        AuthResponseMessage authResponseMessage = new AuthResponseMessage
+        {
+            code = 200,
+            message = error
+        };
+
+        conn.Send(authResponseMessage);
+
+        // must set NetworkConnection isAuthenticated = false
+        conn.isAuthenticated = false;
+
+        // disconnect the client after 1 second so that response message gets delivered
+        if (!ServerAuthFailed)
+        {
+            // set this false so this coroutine can only be started once
+            ServerAuthFailed = true;
+
+            StartCoroutine(DelayedDisconnect(conn, 1.0f));
+        }
     }
 
     #endregion
@@ -217,6 +225,7 @@ public class Authenticator : NetworkAuthenticator
         AuthRequestMessage authRequestMessage = new AuthRequestMessage
         {
             authEmail = manager.email,
+            authUsername = manager.username,
             authPassword = manager.password,
             isRegister = manager.isRegister
         };

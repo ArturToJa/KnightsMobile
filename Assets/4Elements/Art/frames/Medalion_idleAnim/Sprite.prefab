@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 9
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.15277863, y: .249397278, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 403917295, guid: 72aec5c4cd37ed34f91eb14f278aefc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 11400000, guid: 278dc87d00abf084292259c2a2d762b9, type: 2}
+  sprites:
+  - 656d7074795f6269675f6672616d655f30
+  - 656d7074795f6269675f6672616d655f31
+  - 656d7074795f6269675f6672616d655f32
+  - 656d7074795f6269675f6672616d655f33
+  - 656d7074795f6269675f6672616d655f34
+  - 656d7074795f6269675f6672616d655f35
+  - 656d7074795f6269675f6672616d655f36
+  - 656d7074795f6269675f6672616d655f37
+  - 656d7074795f6269675f6672616d655f38
+  - 656d7074795f6269675f6672616d655f39
+  - 656d7074795f6269675f6672616d655f3130
+  - 656d7074795f6269675f6672616d655f3131
+  - 656d7074795f6269675f6672616d655f3132
+  - 656d7074795f6269675f6672616d655f3133
+  - 656d7074795f6269675f6672616d655f3134
+  - 656d7074795f6269675f6672616d655f3135
+  - 656d7074795f6269675f6672616d655f3136
+  - 656d7074795f6269675f6672616d655f3137
+  - 656d7074795f6269675f6672616d655f3138
+  - 656d7074795f6269675f6672616d655f3139
+  - 656d7074795f6269675f6672616d655f3230
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1
